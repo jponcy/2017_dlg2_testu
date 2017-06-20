@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Barbecue</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ barbecue.id }}</td>
+            </tr>
+            <tr>
+                <th>Startat</th>
+                <td>{% if barbecue.startAt %}{{ barbecue.startAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Label</th>
+                <td>{{ barbecue.label }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ barbecue.address }}</td>
+            </tr>
+            <tr>
+                <th>Peoplelimit</th>
+                <td>{{ barbecue.peopleLimit }}</td>
+            </tr>
+            <tr>
+                <th>Billprice</th>
+                <td>{{ barbecue.billPrice }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('barbecue_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('barbecue_edit', { 'id': barbecue.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

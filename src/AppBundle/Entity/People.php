@@ -26,8 +26,6 @@ class People
     /**
      * @var string
      *
-     * @Assert\NotBlank()
-     *
      * @ORM\Column(name="lastname", type="string", length=255)
      */
     private $lastname;
@@ -43,8 +41,8 @@ class People
      * @var int
      *
      * @ORM\Column(name="diet", type="integer", nullable=true)
-     * @Assert\Choice(callback={"\AppBundle\Enum\Diet", "getPossibilities"})
      */
+    //  * @Assert\Choice(callback={"\AppBundle\Enum\Diet", "getPossibilities"})
     private $diet = Diet::CARNIVOR;
 
     /**

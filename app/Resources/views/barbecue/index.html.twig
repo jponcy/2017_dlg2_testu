@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Barbecues list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Startat</th>
+                <th>Label</th>
+                <th>Address</th>
+                <th>Peoplelimit</th>
+                <th>Billprice</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for barbecue in barbecues %}
+            <tr>
+                <td><a href="{{ path('barbecue_show', { 'id': barbecue.id }) }}">{{ barbecue.id }}</a></td>
+                <td>{% if barbecue.startAt %}{{ barbecue.startAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ barbecue.label }}</td>
+                <td>{{ barbecue.address }}</td>
+                <td>{{ barbecue.peopleLimit }}</td>
+                <td>{{ barbecue.billPrice }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('barbecue_show', { 'id': barbecue.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('barbecue_edit', { 'id': barbecue.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('barbecue_new') }}">Create a new barbecue</a>
+        </li>
+    </ul>
+{% endblock %}
